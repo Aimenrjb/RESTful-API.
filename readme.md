@@ -20,8 +20,11 @@ For an example consumer application for your API, have a look [here](http://todo
 ## Installation / Getting started
 
 git init .
+
 git add .
+
 git commit -m "Your initial commit message of choice"
+
 ```
 
 Ensure you have the following software (globally) installed on your system:
