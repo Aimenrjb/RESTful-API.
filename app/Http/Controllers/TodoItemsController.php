@@ -25,7 +25,7 @@ class TodoItemsController extends Controller
     }
 
     else {
-        return response()->json(["status" => "failed", "success" => false, "message" => "Whoops! no todoItems found"]);
+        return response()->json(["status" => 404, "success" => false, "message" => "Whoops! no todoItems found"]);
     }
       
      }
@@ -50,7 +50,7 @@ class TodoItemsController extends Controller
         }
 
         else {
-            return response()->json(["status" => "failed", "success" => false, "message" => "Whoops! no todoItem found"]);
+            return response()->json(["status" => 404, "success" => false, "message" => "Whoops! no todoItem found"]);
         }
      }
 
@@ -59,6 +59,7 @@ class TodoItemsController extends Controller
         $todoItem= TodoItem::find($id);
 
         if(!is_null($todoItem)) {
+
             $todoItem->name = $request->input('name');
             $todoItem->description = $request->input('description');
             $todoItem->save();
@@ -66,7 +67,7 @@ class TodoItemsController extends Controller
          }
         else 
         {
-        return response()->json(["status" => "failed", "success" => false, "message" => "Whoops! no todoItem found"]);
+        return response()->json(["status" => 404, "success" => false, "message" => "Whoops! no todoItem found"]);
          }  
         
     }
@@ -81,7 +82,7 @@ class TodoItemsController extends Controller
          }
         else 
         {
-        return response()->json(["status" => "failed", "success" => false, "message" => "Whoops! no todoItem found"]);
+        return response()->json(["status" => 404, "success" => false, "message" => "Whoops! no todoItem found"]);
          }  
         
        
