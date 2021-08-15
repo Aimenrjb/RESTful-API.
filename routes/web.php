@@ -14,3 +14,12 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+$router->group(['prefix'=>'api/v1'], function() use($router){
+
+    $router->get('/items', 'TodoItemsController@index');
+    $router->post('/items', 'TodoItemsController@create');
+    $router->get('/items/{id}', 'TodoItemsController@show');
+    $router->put('/items/{id}', 'TodoItemsController@update');
+    $router->delete('/items/{id}', 'TodoItemsController@destroy');
+
+});
