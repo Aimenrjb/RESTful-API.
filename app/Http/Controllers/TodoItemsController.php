@@ -9,21 +9,25 @@ use Illuminate\Http\Request;
 
 class TodoItemsController extends Controller
 {
+    //private $sucess_status = 200;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        //
-    }
     
      public function index()
      {
      
        $todoItems = TodoItem::all();
-       return response()->json($todoItems);
+       if(count($todoItems) > 0) {
+        return response()->json( $todoItems);
+    }
+
+    else {
+        return response()->json(["status" => "failed", "success" => false, "message" => "Whoops! no todoItems found"]);
+    }
+      
      }
 
      public function create(Request $request)
@@ -39,24 +43,48 @@ class TodoItemsController extends Controller
      public function show($id)
      {
         $todoItem = TodoItem::find($id);
-        return response()->json($todoItem);
+        //return response()->json($todoItem);
+
+        if(!is_null($todoItem)) {
+            return response()->json( $todoItem);
+        }
+
+        else {
+            return response()->json(["status" => "failed", "success" => false, "message" => "Whoops! no todoItem found"]);
+        }
      }
 
      public function update(Request $request, $id)
      { 
         $todoItem= TodoItem::find($id);
+
+        if(!is_null($todoItem)) {
+            $todoItem->name = $request->input('name');
+            $todoItem->description = $request->input('description');
+            $todoItem->save();
+             return response()->json($todoItem);
+         }
+        else 
+        {
+        return response()->json(["status" => "failed", "success" => false, "message" => "Whoops! no todoItem found"]);
+         }  
         
-        $todoItem->name = $request->input('name');
-        $todoItem->description = $request->input('description');
-        $todoItem->save();
-        return response()->json($todoItem);
-     }
+    }
+     
 
      public function destroy($id)
      {
         $todoItem = TodoItem::find($id);
-        $todoItem->delete();
+        if(!is_null($todoItem)) {
+            $todoItem->delete();
         return response()->json('todoItem removed successfully');
+         }
+        else 
+        {
+        return response()->json(["status" => "failed", "success" => false, "message" => "Whoops! no todoItem found"]);
+         }  
+        
+       
      }
    
 }
