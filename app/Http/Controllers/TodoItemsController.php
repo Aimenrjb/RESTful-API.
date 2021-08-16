@@ -78,7 +78,7 @@ class TodoItemsController extends Controller
         $todoItem = TodoItem::find($id);
         if(!is_null($todoItem)) {
             $todoItem->delete();
-        return response()->json(["status" => 200, "success" => true, "data" => "Item deleted seccufuly"]);
+        return response()->json(["status" => 204, "success" => true, "data" => "Item deleted seccufuly"]);
          }
         else 
         {
