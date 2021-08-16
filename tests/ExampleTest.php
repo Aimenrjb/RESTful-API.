@@ -19,11 +19,10 @@ class ExampleTest extends TestCase
         );
    
     }
-    public function testShouldReturnAllItems()
-    {
+    public function testShouldReturnAllItems(){
+
         echo( "ReturnAllItems \n");
         $response =  $this->json('Get','/api/v1/items');
-
         $response->seeStatusCode(200);
         
     }
