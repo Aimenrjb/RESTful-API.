@@ -37,7 +37,7 @@ class TodoItemsController extends Controller
        $todoItem->description= $request->description;
        
        $todoItem->save();
-       return response()->json(["status" => 200, "success" => true, "data" => $todoItems]);
+       return response()->json(["status" => 200, "success" => true, "data" => $todoItem]);
      }
 
      public function show($id)
