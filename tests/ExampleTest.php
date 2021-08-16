@@ -1,6 +1,7 @@
 <?php
 namespace Tests;
 
+
 class ExampleTest extends TestCase
 {
     /**
@@ -17,4 +18,5 @@ class ExampleTest extends TestCase
             $this->response->getContent()
         );
     }
+
 }

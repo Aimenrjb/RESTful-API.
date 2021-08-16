@@ -21,11 +21,11 @@ class TodoItemsController extends Controller
      
        $todoItems = TodoItem::all();
        if(count($todoItems) > 0) {
-        return response()->json( $todoItems);
+        return response()->json(["status" => 200, "success" => true, "data" => $todoItems]);
     }
 
     else {
-        return response()->json(["status" => 404, "success" => false, "message" => "Whoops! no todoItems found"]);
+        return response()->json(["status" => 404, "success" => false, "data" => "Whoops! no todoItems found"]);
     }
       
      }
@@ -37,7 +37,7 @@ class TodoItemsController extends Controller
        $todoItem->description= $request->description;
        
        $todoItem->save();
-       return response()->json($todoItem);
+       return response()->json(["status" => 200, "success" => true, "data" => $todoItems]);
      }
 
      public function show($id)
@@ -46,11 +46,11 @@ class TodoItemsController extends Controller
         //return response()->json($todoItem);
 
         if(!is_null($todoItem)) {
-            return response()->json( $todoItem);
+            return response()->json(["status" => 200, "success" => true, "data" => $todoItem]);
         }
 
         else {
-            return response()->json(["status" => 404, "success" => false, "message" => "Whoops! no todoItem found"]);
+            return response()->json(["status" => 404, "success" => false, "data" => "Whoops! no todoItem found"]);
         }
      }
 
@@ -67,7 +67,7 @@ class TodoItemsController extends Controller
          }
         else 
         {
-        return response()->json(["status" => 404, "success" => false, "message" => "Whoops! no todoItem found"]);
+        return response()->json(["status" => 404, "success" => false, "data" => "Whoops! no todoItem found"]);
          }  
         
     }
@@ -78,7 +78,7 @@ class TodoItemsController extends Controller
         $todoItem = TodoItem::find($id);
         if(!is_null($todoItem)) {
             $todoItem->delete();
-        return response()->json('todoItem removed successfully');
+        return response()->json(["status" => 200, "success" => true, "data" => "Item deleted seccufuly"]);
          }
         else 
         {
