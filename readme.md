@@ -1,6 +1,6 @@
 # PHP Programming Challenge: RESTful ToDo Service
 
-## Objective
+
 
 Implement a ToDo-Service which can be used via a RESTful API.
 
@@ -18,14 +18,13 @@ Nice to haves:
 For an example consumer application for your API, have a look [here](http://todomvc.com/examples/vue/).
 
 ## Installation / Getting started
-Please do **not** fork this repository, but clone it and re-initialize it as your own repository.
-Make the first commit without applying any changes to the code. 
-Then, start your solution.
 
-```sh
 git init .
+
 git add .
+
 git commit -m "Your initial commit message of choice"
+
 ```
 
 Ensure you have the following software (globally) installed on your system:
@@ -46,7 +45,3 @@ composer test
 # start the dev server
 composer start
 ```
-
-## Project submission
-
-Feel free to place this test on your Github/Gitlab/Bitbucket/... account as a public repository. Send the link back to Joblocal. We are looking forward to hearing from you. Good luck! :)
