@@ -63,7 +63,7 @@ class TodoItemsController extends Controller
             $todoItem->name = $request->input('name');
             $todoItem->description = $request->input('description');
             $todoItem->save();
-             return response()->json($todoItem);
+            return response()->json(["status" => 201, "success" => true, "data" => "Item updated successfully"]);
          }
         else 
         {
@@ -78,7 +78,7 @@ class TodoItemsController extends Controller
         $todoItem = TodoItem::find($id);
         if(!is_null($todoItem)) {
             $todoItem->delete();
-        return response()->json(["status" => 204, "success" => true, "data" => "Item deleted seccufuly"]);
+        return response()->json(["status" => 204, "success" => true, "data" => "Item deleted successfully"]);
          }
         else 
         {
